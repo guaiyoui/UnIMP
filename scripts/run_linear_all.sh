@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=1 nohup python3 -u main.py --epochs 5000 --header_type Linear --chunk_size 1024 --chunk_batch 64 --device 0 --save_name allinone_v3 >> ./logs/All_Linear_v3.txt 2>&1 &

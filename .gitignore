@@ -1,0 +1,10 @@
+__pycache__
+/logs/
+test.py
+/checkpoint/
+/figures/
+/finetuned_models/
+/prompt_embedding/
+/saved_models/
+/scripts_backup/
+/data_all/
