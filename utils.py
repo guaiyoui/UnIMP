@@ -430,7 +430,7 @@ def compute_rouge_w(label, pred):
     }
 
 def jaccard_sim(str1, str2):
-    # 将两个文本分词并转换为集合
+    
     set1 = set(str1.split())
     set2 = set(str2.split())
     

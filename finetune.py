@@ -94,7 +94,6 @@ def generate_impute(args, embedding, impute_model, test_ve_affiliation, lm_model
 
     batch_size = len(x_text_test)
 
-    # 对每个输入文本进行tokenize
     inputs = tokenizer(x_text_test, padding=True, truncation=True, return_tensors="pt")
     device = get_main_device(lm_model)
     inputs = {k: v.to(device) for k, v in inputs.items()}
@@ -295,7 +294,7 @@ def finetune_model(args, device=torch.device('cpu')):
                 pred = impute_model([embedding[train_ve_affiliation[0, :int(train_hyper_node.shape[0]/2)]], embedding[train_ve_affiliation[1, :int(train_hyper_node.shape[0]/2)]]], train_tokens_emb)
                 pred_train = pred[:int(train_hyper_node.shape[0] / 2),0]
                 label_train = train_labels
-                # huber_loss = torch.nn.HuberLoss(delta=1)  # delta参数可调
+                # huber_loss = torch.nn.HuberLoss(delta=1)  
                 huber_loss = torch.nn.HuberLoss(delta=args.delta)
                 loss = huber_loss(pred_train, label_train)
             elif args.header_type == "LLM":

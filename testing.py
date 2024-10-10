@@ -278,7 +278,7 @@ def test_model(args, device=torch.device('cpu')):
                 elif args.header_type == "LLM":
                     x_text_test = test_node_text[i]
                     # print(x_text_test)
-                    half_length = len(x_text_test) // 2  # 使用整数除法获取列表长度的一半
+                    half_length = len(x_text_test) // 2  
                     x_text_test = x_text_test[:half_length]
                     test_ve_affiliation = test_ve_affiliation[:, :half_length]
 

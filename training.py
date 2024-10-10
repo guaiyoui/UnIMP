@@ -56,12 +56,10 @@ class HyperBatch:
 
             batch_train_labels.append(train_labels_all[ids[i]])
 
-            # 批次指示器
             batch_indicator.append(torch.full((num_edge,), i, dtype=torch.long))
 
             cumulative_edge += num_edge
 
-        # 合并所有张量
 
         train_hyper_node = torch.cat(batch_train_hyper_node, dim=0)
         hyperedge = torch.cat(batch_hyperedge, dim=0)
@@ -97,7 +95,6 @@ def generate_impute(args, embedding, impute_model, test_ve_affiliation, lm_model
 
     batch_size = len(x_text_test)
 
-    # 对每个输入文本进行tokenize
     if batch_size == 0:
         return [], []
 
@@ -282,7 +279,7 @@ def train_model(args, device=torch.device('cpu')):
                 pred = impute_model([embedding[train_ve_affiliation[0, :int(train_hyper_node.shape[0]/2)]], embedding[train_ve_affiliation[1, :int(train_hyper_node.shape[0]/2)]]], train_tokens_emb)
                 pred_train = pred[:int(train_hyper_node.shape[0] / 2),0]
                 label_train = train_labels
-                huber_loss = torch.nn.HuberLoss(delta=1)  # delta参数可调
+                huber_loss = torch.nn.HuberLoss(delta=1)  
                 loss = huber_loss(pred_train, label_train)
             elif args.header_type == "LLM":
                 train_tokens_emb = batch.train_tokens_emb.to(device)
@@ -331,7 +328,7 @@ def train_model(args, device=torch.device('cpu')):
 
                         elif args.header_type == "LLM":
                             x_text_test = test_node_text[i]
-                            half_length = len(x_text_test) // 2  # 使用整数除法获取列表长度的一半
+                            half_length = len(x_text_test) // 2 
                             x_text_test = x_text_test[:half_length]
                             test_ve_affiliation = test_ve_affiliation[:, :half_length]
                             # print(f"the x_text_test is : {x_text_test}")
