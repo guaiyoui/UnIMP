@@ -1,4 +1,4 @@
-Code for the paper "On LLMs-Enhanced Mixed-Type Data Imputation with High-Order Message Passing" which is submitted for reviewing in SIGMOD 2025.
+Code for the paper "On LLMs-Enhanced Mixed-Type Data Imputation with High-Order Message Passing" which is submitted for reviewing in VLDB 2025.
 
 
 ### Pre-training 
