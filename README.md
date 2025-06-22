@@ -1,4 +1,4 @@
-Code for the paper "On LLM-Enhanced Mixed-Type Data Imputation with High-Order Message Passing" which is submitted for reviewing in VLDB 2025.
+Code for the paper "On LLM-Enhanced Mixed-Type Data Imputation with High-Order Message Passing", VLDB 2025.
 
 
 ### Pre-training 
